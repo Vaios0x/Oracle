@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "pnpm run vercel-build",
+  "buildCommand": "cd app && pnpm install && pnpm run build",
   "outputDirectory": "app/.next",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "cd app && pnpm install",
   "framework": "nextjs",
   "functions": {
     "app/app/api/**/*.ts": {
