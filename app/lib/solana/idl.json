@@ -1,0 +1,601 @@
+{
+  "version": "0.1.0",
+  "name": "oraculo",
+  "metadata": {
+    "address": "11111111111111111111111111111111"
+  },
+  "instructions": [
+    {
+      "name": "initializeConfig",
+      "accounts": [
+        {
+          "name": "config",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "authority",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "governanceTokenMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "treasury",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "minLiquidity",
+          "type": "u64"
+        },
+        {
+          "name": "proposalStake",
+          "type": "u64"
+        },
+        {
+          "name": "quorum",
+          "type": "u64"
+        },
+        {
+          "name": "supermajorityPercent",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "createMarket",
+      "accounts": [
+        {
+          "name": "config",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "creator",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "creatorUsdc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidityVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "yesTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "noTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "usdcMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "question",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "category",
+          "type": "u8"
+        },
+        {
+          "name": "endTime",
+          "type": "i64"
+        },
+        {
+          "name": "resolutionSource",
+          "type": "string"
+        },
+        {
+          "name": "initialLiquidity",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "placeBet",
+      "accounts": [
+        {
+          "name": "market",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userUsdc",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidityVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "yesTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "noTokenMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userOutcomeToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "betOnYes",
+          "type": "bool"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Config",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "governanceTokenMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "minLiquidity",
+            "type": "u64"
+          },
+          {
+            "name": "proposalStake",
+            "type": "u64"
+          },
+          {
+            "name": "quorum",
+            "type": "u64"
+          },
+          {
+            "name": "supermajorityPercent",
+            "type": "u8"
+          },
+          {
+            "name": "treasury",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalMarkets",
+            "type": "u64"
+          },
+          {
+            "name": "totalVolume",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Market",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "question",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "type": {
+              "defined": "MarketCategory"
+            }
+          },
+          {
+            "name": "createdAt",
+            "type": "i64"
+          },
+          {
+            "name": "endTime",
+            "type": "i64"
+          },
+          {
+            "name": "resolutionTime",
+            "type": "i64"
+          },
+          {
+            "name": "resolutionSource",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": "MarketStatus"
+            }
+          },
+          {
+            "name": "outcome",
+            "type": {
+              "option": "bool"
+            }
+          },
+          {
+            "name": "resolvedAt",
+            "type": {
+              "option": "i64"
+            }
+          },
+          {
+            "name": "totalLiquidity",
+            "type": "u64"
+          },
+          {
+            "name": "yesPool",
+            "type": "u64"
+          },
+          {
+            "name": "noPool",
+            "type": "u64"
+          },
+          {
+            "name": "yesMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "noMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "volume",
+            "type": "u64"
+          },
+          {
+            "name": "uniqueBettors",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "MarketCategory",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Crypto"
+          },
+          {
+            "name": "Sports"
+          },
+          {
+            "name": "Politics"
+          },
+          {
+            "name": "Entertainment"
+          },
+          {
+            "name": "Technology"
+          },
+          {
+            "name": "Other"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MarketStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Resolved"
+          },
+          {
+            "name": "Cancelled"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "ConfigInitialized",
+      "fields": [
+        {
+          "name": "authority",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "governanceTokenMint",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "minLiquidity",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "proposalStake",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "quorum",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "MarketCreated",
+      "fields": [
+        {
+          "name": "market",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "creator",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "question",
+          "type": "string",
+          "index": false
+        },
+        {
+          "name": "category",
+          "type": {
+            "defined": "MarketCategory"
+          },
+          "index": false
+        },
+        {
+          "name": "endTime",
+          "type": "i64",
+          "index": false
+        },
+        {
+          "name": "initialLiquidity",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "BetPlaced",
+      "fields": [
+        {
+          "name": "market",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "user",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "betOnYes",
+          "type": "bool",
+          "index": false
+        },
+        {
+          "name": "amount",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "cost",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "yesPool",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "noPool",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "QuestionTooLong",
+      "msg": "Question too long (max 200 characters)"
+    },
+    {
+      "code": 6001,
+      "name": "DescriptionTooLong",
+      "msg": "Description too long (max 500 characters)"
+    },
+    {
+      "code": 6002,
+      "name": "InsufficientLiquidity",
+      "msg": "Insufficient initial liquidity"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidEndTime",
+      "msg": "Invalid end time (must be in future)"
+    },
+    {
+      "code": 6004,
+      "name": "MarketNotActive",
+      "msg": "Market not active"
+    },
+    {
+      "code": 6005,
+      "name": "BetTooSmall",
+      "msg": "Bet too small (min 1 USDC)"
+    },
+    {
+      "code": 6006,
+      "name": "MathOverflow",
+      "msg": "Math overflow"
+    },
+    {
+      "code": 6007,
+      "name": "MathUnderflow",
+      "msg": "Math underflow"
+    },
+    {
+      "code": 6008,
+      "name": "DivisionByZero",
+      "msg": "Division by zero"
+    },
+    {
+      "code": 6009,
+      "name": "QuorumNotReached",
+      "msg": "Quorum not reached"
+    },
+    {
+      "code": 6010,
+      "name": "NoSupermajority",
+      "msg": "No supermajority"
+    },
+    {
+      "code": 6011,
+      "name": "AlreadyVoted",
+      "msg": "Already voted"
+    },
+    {
+      "code": 6012,
+      "name": "MarketNotResolved",
+      "msg": "Market not resolved"
+    },
+    {
+      "code": 6013,
+      "name": "ProposalNotActive",
+      "msg": "Proposal not active"
+    },
+    {
+      "code": 6014,
+      "name": "VotingEnded",
+      "msg": "Voting period ended"
+    },
+    {
+      "code": 6015,
+      "name": "VotingNotEnded",
+      "msg": "Voting period not ended yet"
+    },
+    {
+      "code": 6016,
+      "name": "OutcomeNotSet",
+      "msg": "Outcome not set"
+    },
+    {
+      "code": 6017,
+      "name": "InvalidSupermajority",
+      "msg": "Invalid supermajority percentage"
+    }
+  ]
+}

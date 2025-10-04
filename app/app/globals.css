@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    
+    /* Neural Network Variables */
+    --neural-primary: 153 69 255;
+    --neural-secondary: 20 241 149;
+    --neural-accent: 255 107 107;
+    --neural-bg: 15 15 35;
+    
+    /* Glass Variables */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    
+    /* Animation Variables */
+    --animation-duration: 0.3s;
+    --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Neural Network Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(153, 69, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(20, 241, 149, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(15, 15, 35, 0.8) 0%, rgba(30, 30, 60, 0.6) 100%);
+    z-index: -2;
+    animation: neural-shift 20s ease-in-out infinite;
+  }
+
+  /* Advanced Glass Morphism */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+    backdrop-filter: blur(1px);
+    z-index: -1;
+    animation: glass-shift 15s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  /* Advanced Glass Effects */
+  .glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 
+      0 8px 32px rgba(31, 38, 135, 0.37),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .glass:hover::before {
+    left: 100%;
+  }
+
+  .glass-hover {
+    @apply hover:bg-white/15 hover:backdrop-blur-2xl transition-all duration-500;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Neural Network Background */
+  .neural-bg {
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(153, 69, 255, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(20, 241, 149, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, rgba(153, 69, 255, 0.15) 0%, transparent 50%);
+    animation: neural-pulse 8s ease-in-out infinite;
+  }
+
+  /* Advanced Gradient Text */
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      #9945ff 0%,
+      #14f195 25%,
+      #ff6b6b 50%,
+      #9945ff 75%,
+      #14f195 100%
+    );
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+
+  /* Ultra Glass Card */
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(25px) saturate(180%) brightness(1.1);
+    -webkit-backdrop-filter: blur(25px) saturate(180%) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 
+      0 8px 32px rgba(31, 38, 135, 0.37),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Neural Glow Effect */
+  .neural-glow {
+    position: relative;
+  }
+
+  .neural-glow::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+      45deg,
+      #8b5cf6,
+      #7c3aed,
+      #6d28d9,
+      #8b5cf6
+    );
+    border-radius: inherit;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .neural-glow:hover::after {
+    opacity: 0.7;
+  }
+
+  /* Advanced Button Styles */
+  .neural-button {
+    position: relative;
+    background: linear-gradient(
+      135deg,
+      rgba(147, 51, 234, 0.8) 0%,
+      rgba(88, 28, 135, 0.8) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+  }
+
+  .neural-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .neural-button:hover::before {
+    left: 100%;
+  }
+
+  /* Floating Elements */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .floating:nth-child(2n) {
+    animation-delay: -2s;
+  }
+
+  .floating:nth-child(3n) {
+    animation-delay: -4s;
+  }
+}
+
+/* Advanced Animations */
+@keyframes neural-shift {
+  0%, 100% { 
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  25% { 
+    transform: translateX(-10px) translateY(-5px) scale(1.05);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateX(5px) translateY(10px) scale(0.95);
+    opacity: 0.9;
+  }
+  75% { 
+    transform: translateX(-5px) translateY(-10px) scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glass-shift {
+  0%, 100% { 
+    transform: translateX(0) translateY(0);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateX(20px) translateY(-10px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes neural-pulse {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floating {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% { 
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% { 
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+@keyframes shimmer {
+  0% { 
+    transform: translateX(-100%);
+  }
+  100% { 
+    transform: translateX(100%);
+  }
+}
+
+@keyframes neural-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(147, 51, 234, 0.3),
+      0 0 40px rgba(88, 28, 135, 0.2),
+      0 0 60px rgba(109, 40, 217, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 30px rgba(88, 28, 135, 0.5),
+      0 0 60px rgba(147, 51, 234, 0.3),
+      0 0 90px rgba(109, 40, 217, 0.2);
+  }
+}
+
+@keyframes neural-connection {
+  0% { 
+    stroke-dasharray: 0 100;
+    opacity: 0;
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    stroke-dasharray: 100 0;
+    opacity: 0;
+  }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    rgba(153, 69, 255, 0.6) 0%,
+    rgba(20, 241, 149, 0.6) 100%
+  );
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(153, 69, 255, 0.8) 0%,
+    rgba(20, 241, 149, 0.8) 100%
+  );
+  transform: scale(1.1);
+}
+
+/* Reown AppKit overrides */
+w3m-modal {
+  --w3m-z-index: 999999;
+  --w3m-accent: #9945FF;
+  backdrop-filter: blur(20px);
+}
+
+/* Neural network animation */
+.neural-line {
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+/* Loading shimmer effect */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Advanced Neural Effects */
+.neural-connection {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: neural-connection 2s ease-in-out infinite;
+}
+
+.neural-glow-effect {
+  animation: neural-glow 4s ease-in-out infinite;
+}
+
+/* Glass Morphism Enhancements */
+.glass-enhanced {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(30px) saturate(200%) brightness(1.2);
+  -webkit-backdrop-filter: blur(30px) saturate(200%) brightness(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 12px 40px rgba(31, 38, 135, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+/* Performance Optimizations */
+.glass,
+.glass-card,
+.neural-glow {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .glass-card {
+    padding: 0.75rem;
+  }
+  
+  .neural-glow {
+    filter: brightness(0.8);
+  }
+  
+  .gradient-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .glass-card {
+    padding: 1.25rem;
+  }
+}
+
+/* Large Screen Optimizations */
+@media (min-width: 1025px) {
+  .glass-card {
+    padding: 1.5rem;
+  }
+  
+  .neural-glow {
+    filter: brightness(1.1);
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .glass-hover:hover {
+    transform: none;
+  }
+  
+  .neural-glow:hover::after {
+    opacity: 0.3;
+  }
+  
+  .glass-card:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "minLiquidity": 100000000,
+  "proposalStake": 1000000000000,
+  "quorum": 10000000000000,
+  "supermajority": 66,
+  "governanceMint": "67sXs37KRwV3bVbtuKhypmZ9ijpoaYx3PL8RpcQo9wo4",
+  "configPDA": "bJV4vxUzyGExGeMnUdGrBCnBzqcQqBZbSq5hG2mH7Mt",
+  "treasuryPDA": "EYubjyQK4zypWe4h5XXKdERDKvjzRs66iEWuytm8yuXP"
+}

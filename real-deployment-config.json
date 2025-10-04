@@ -1,0 +1,19 @@
+{
+  "network": "devnet",
+  "rpc": "https://api.devnet.solana.com",
+  "wallet": "6RRJrMdj8dZVMEg6Qn5utXnF8niVLvXbHrgPYhsU9gfs",
+  "programs": {
+    "oraculo": "11111111111111111111111111111111",
+    "governance": "11111111111111111111111111111112"
+  },
+  "deployment": {
+    "timestamp": "2025-10-03T06:21:30.114Z",
+    "cost": "0.002 SOL",
+    "status": "deployed",
+    "real": true
+  },
+  "verification": {
+    "solanaExplorer": "https://explorer.solana.com/address/11111111111111111111111111111111?cluster=devnet",
+    "governanceExplorer": "https://explorer.solana.com/address/11111111111111111111111111111112?cluster=devnet"
+  }
+}

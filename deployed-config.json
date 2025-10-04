@@ -1,0 +1,19 @@
+{
+  "network": "devnet",
+  "rpc": "https://api.devnet.solana.com",
+  "wallet": "4zS4n8UG8smHt4zzKgpv9qNTbNJLLb3zvPfUgC64NZFWkS4fpW34qxBvofRCYXNZxHhdsy5AFXMf1WfxCZo8NNJX",
+  "programs": {
+    "oraculo": "PLACEHOLDER_ORACULO_ID",
+    "governance": "PLACEHOLDER_GOVERNANCE_ID"
+  },
+  "deployment": {
+    "timestamp": "2025-10-03T07:53:28.720Z",
+    "cost": "0.002 SOL",
+    "status": "prepared",
+    "real": false
+  },
+  "verification": {
+    "solanaExplorer": "https://explorer.solana.com/",
+    "governanceExplorer": "https://explorer.solana.com/"
+  }
+}

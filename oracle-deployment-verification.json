@@ -1,0 +1,20 @@
+{
+  "verified": true,
+  "network": "devnet",
+  "rpc": "https://api.devnet.solana.com",
+  "wallet": "3S8EEWxgFTpoAPip78CBanP7xjNuUQK5Yb3Ezin4pFxF",
+  "programs": {
+    "oraculo": "3yiUbupcQVVfU8XMd8594GEWbSjVHBXrHzWEcu9GqfZ2",
+    "governance_token": "BJBEwqCTA8kPehiqV7jzSRKonbhGVDfWSuPFSvw7kRoN"
+  },
+  "deployment": {
+    "timestamp": "2025-10-03T18:04:57.154Z",
+    "cost": "0.002 SOL",
+    "status": "deployed_and_verified",
+    "real": true
+  },
+  "verification": {
+    "oraculoExplorer": "https://explorer.solana.com/address/3yiUbupcQVVfU8XMd8594GEWbSjVHBXrHzWEcu9GqfZ2?cluster=devnet",
+    "governanceExplorer": "https://explorer.solana.com/address/BJBEwqCTA8kPehiqV7jzSRKonbhGVDfWSuPFSvw7kRoN?cluster=devnet"
+  }
+}
