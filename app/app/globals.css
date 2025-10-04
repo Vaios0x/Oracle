@@ -598,23 +598,23 @@ w3m-modal {
 
   /* Mobile Chatbot Optimizations */
   .mobile-chatbot {
-    max-height: 80vh;
-    max-width: 95vw;
+    max-height: 60vh;
+    max-width: 90vw;
   }
 
   .mobile-chatbot-messages {
-    max-height: 60vh;
+    max-height: 40vh;
     overflow-y: auto;
   }
 
   .mobile-chatbot-input {
-    min-height: 40px;
-    font-size: 14px;
+    min-height: 32px;
+    font-size: 12px;
   }
 
   .mobile-chatbot-button {
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 32px;
+    min-height: 32px;
   }
 
   /* Mobile Chatbot Text */

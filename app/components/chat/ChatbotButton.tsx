@@ -16,12 +16,12 @@ export function ChatbotButton() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-gray-700 rounded-full shadow-2xl flex items-center justify-center group border border-gray-600/30 mobile-touch"
+        className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-40 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-gray-700 rounded-full shadow-2xl flex items-center justify-center group border border-gray-600/30 mobile-touch"
       >
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="w-6 h-6 sm:w-8 sm:h-8"
+          className="w-4 h-4 sm:w-8 sm:h-8"
         >
           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
             <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" strokeWidth="2"/>

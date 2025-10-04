@@ -132,17 +132,17 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
         neural 
         glow 
         floating
-        className="relative w-full max-w-sm sm:max-w-md h-[400px] sm:h-[500px] flex flex-col mobile-card mobile-chatbot"
+        className="relative w-full max-w-xs sm:max-w-md h-[300px] sm:h-[500px] flex flex-col mobile-card mobile-chatbot"
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-2 sm:p-4 border-b border-gray-200/20 mobile-p-2">
-          <div className="flex items-center gap-2 sm:gap-3 mobile-gap-2">
-            <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full animate-pulse"></div>
-            <h3 className="text-sm sm:text-lg font-semibold text-gray-100 mobile-text-xs">SuperIntelligence AI</h3>
+        <div className="flex items-center justify-between p-1.5 sm:p-4 border-b border-gray-200/20 mobile-p-1">
+          <div className="flex items-center gap-1.5 sm:gap-3 mobile-gap-1">
+            <div className="w-1.5 h-1.5 sm:w-3 sm:h-3 bg-blue-500 rounded-full animate-pulse"></div>
+            <h3 className="text-xs sm:text-lg font-semibold text-gray-100 mobile-text-xs">AI</h3>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-full p-1 sm:p-2 transition-all duration-200 text-lg sm:text-xl font-bold mobile-touch"
+            className="text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-full p-0.5 sm:p-2 transition-all duration-200 text-sm sm:text-xl font-bold mobile-touch"
             title="Cerrar chatbot"
           >
             ×
@@ -150,7 +150,7 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-2 sm:space-y-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 mobile-p-2 mobile-gap-2 mobile-chatbot-messages">
+        <div className="flex-1 overflow-y-auto p-1.5 sm:p-4 space-y-1.5 sm:space-y-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 mobile-p-1 mobile-gap-1 mobile-chatbot-messages">
           {messages.map((message) => (
             <motion.div
               key={message.id}
@@ -160,16 +160,16 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
               className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[85%] sm:max-w-[80%] p-2 sm:p-3 rounded-xl sm:rounded-2xl ${
+                className={`max-w-[90%] sm:max-w-[80%] p-1.5 sm:p-3 rounded-lg sm:rounded-2xl ${
                   message.type === 'user'
                     ? 'bg-blue-500/20 text-gray-100 border border-blue-500/30'
                     : 'bg-gray-800/50 text-gray-200 border border-gray-700/50'
-                } mobile-p-2`}
+                } mobile-p-1`}
               >
-                <div className="whitespace-pre-wrap text-xs sm:text-sm mobile-text-xs">
+                <div className="whitespace-pre-wrap text-xs sm:text-sm mobile-text-xs leading-tight">
                   {message.content}
                 </div>
-                <div className="text-xs opacity-60 mt-1 mobile-text-xs">
+                <div className="text-xs opacity-60 mt-0.5 mobile-text-xs">
                   {message.timestamp.toLocaleTimeString()}
                 </div>
               </div>
@@ -182,12 +182,12 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
               animate={{ opacity: 1, y: 0 }}
               className="flex justify-start"
             >
-              <div className="bg-gray-800/50 text-gray-200 p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-gray-700/50 mobile-p-2">
-                <div className="flex items-center gap-1 sm:gap-2 mobile-gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+              <div className="bg-gray-800/50 text-gray-200 p-1.5 sm:p-3 rounded-lg sm:rounded-2xl border border-gray-700/50 mobile-p-1">
+                <div className="flex items-center gap-1 sm:gap-2 mobile-gap-1">
+                  <div className="flex gap-0.5">
+                    <div className="w-1 h-1 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-1 h-1 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-1 h-1 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                   <span className="text-xs sm:text-sm mobile-text-xs">Pensando...</span>
                 </div>
@@ -210,16 +210,16 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
         </div>
 
         {/* Input */}
-        <div className="p-2 sm:p-4 border-t border-gray-200/20 mobile-p-2">
-          <div className="flex gap-1 sm:gap-2 mobile-gap-2">
+        <div className="p-1.5 sm:p-4 border-t border-gray-200/20 mobile-p-1">
+          <div className="flex gap-1 sm:gap-2 mobile-gap-1">
             <input
               ref={inputRef}
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Escribe tu consulta aquí..."
-              className="flex-1 bg-gray-800/30 border border-gray-600/30 rounded-lg px-2 sm:px-4 py-1.5 sm:py-2 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-colors text-xs sm:text-sm mobile-input mobile-touch mobile-chatbot-input"
+              placeholder="Escribe aquí..."
+              className="flex-1 bg-gray-800/30 border border-gray-600/30 rounded-md px-2 sm:px-4 py-1 sm:py-2 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-colors text-xs sm:text-sm mobile-input mobile-touch mobile-chatbot-input"
               disabled={isTyping}
             />
             <GlassButton
@@ -227,7 +227,7 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
               disabled={!inputValue.trim() || isTyping}
               variant="neural"
               size="sm"
-              className="mobile-btn mobile-touch mobile-chatbot-button"
+              className="mobile-btn mobile-touch mobile-chatbot-button px-2"
             >
               <span className="hidden sm:inline">Enviar</span>
               <span className="sm:hidden">→</span>
