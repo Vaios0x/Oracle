@@ -39,18 +39,18 @@ export default function RootLayout({
           </main>
 
           {/* Responsive Footer */}
-          <footer className="relative z-20 border-t border-white/10 backdrop-blur-xl glass-enhanced py-8 mt-20">
-            <div className="container mx-auto px-4">
+          <footer className="relative z-20 border-t border-white/10 backdrop-blur-xl glass-enhanced py-6 sm:py-8 mt-12 sm:mt-16 md:mt-20 mobile-mb-6">
+            <div className="container mx-auto px-3 sm:px-4">
               <div className="text-center text-white/60">
-                <p className="text-sm sm:text-base mb-4 sm:mb-6">
+                <p className="text-xs sm:text-sm md:text-base mb-3 sm:mb-4 md:mb-6 mobile-text-xs">
                   Built on Solana for the Cypherpunk Hackathon 2025
                 </p>
-                <div className="flex flex-wrap gap-4 sm:gap-6 justify-center">
+                <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center mobile-gap-2">
                   <a 
                     href="https://twitter.com" 
                     target="_blank" 
                     rel="noopener" 
-                    className="hover:text-white transition text-sm sm:text-base"
+                    className="hover:text-white transition text-xs sm:text-sm md:text-base mobile-touch mobile-text-xs"
                   >
                     Twitter
                   </a>
@@ -58,7 +58,7 @@ export default function RootLayout({
                     href="https://discord.com" 
                     target="_blank" 
                     rel="noopener" 
-                    className="hover:text-white transition text-sm sm:text-base"
+                    className="hover:text-white transition text-xs sm:text-sm md:text-base mobile-touch mobile-text-xs"
                   >
                     Discord
                   </a>
@@ -66,13 +66,13 @@ export default function RootLayout({
                     href="https://github.com" 
                     target="_blank" 
                     rel="noopener" 
-                    className="hover:text-white transition text-sm sm:text-base"
+                    className="hover:text-white transition text-xs sm:text-sm md:text-base mobile-touch mobile-text-xs"
                   >
                     GitHub
                   </a>
                   <a 
                     href="/docs" 
-                    className="hover:text-white transition text-sm sm:text-base"
+                    className="hover:text-white transition text-xs sm:text-sm md:text-base mobile-touch mobile-text-xs"
                   >
                     Docs
                   </a>

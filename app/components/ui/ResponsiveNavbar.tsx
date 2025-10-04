@@ -38,31 +38,31 @@ export function ResponsiveNavbar() {
 
   return (
     <nav className={`relative z-20 border-b border-white/10 backdrop-blur-xl glass-enhanced transition-all duration-300 ${
-      isScrolled ? 'py-2' : 'py-4'
+      isScrolled ? 'py-2' : 'py-3 sm:py-4'
     }`}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-3 sm:px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0 mobile-touch">
             <h1 className={`font-bold transition-all duration-300 ${
-              isScrolled ? 'text-xl' : 'text-2xl'
-            }`}>
+              isScrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'
+            } mobile-h3`}>
               <GradientText>Oráculo</GradientText>
             </h1>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-white/80 hover:text-white transition-colors duration-200 text-sm font-medium"
+                className="text-white/80 hover:text-white transition-colors duration-200 text-sm font-medium mobile-touch"
               >
                 {item.label}
               </Link>
             ))}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 xl:gap-3">
               <NetworkSelector />
               <WalletInfo />
               <ConnectButton />
@@ -72,7 +72,7 @@ export function ResponsiveNavbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
-            className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none"
+            className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none mobile-touch"
             aria-label="Toggle menu"
           >
             <motion.span
@@ -103,7 +103,7 @@ export function ResponsiveNavbar() {
               transition={{ duration: 0.3, ease: 'easeInOut' }}
               className="lg:hidden overflow-hidden"
             >
-              <div className="pt-4 pb-6 space-y-4">
+              <div className="pt-4 pb-6 space-y-3 sm:space-y-4 mobile-gap-2">
                 {/* Mobile Navigation Links */}
                 {navItems.map((item, index) => (
                   <motion.div
@@ -115,7 +115,7 @@ export function ResponsiveNavbar() {
                     <Link
                       href={item.href}
                       onClick={closeMenu}
-                      className="block text-white/80 hover:text-white transition-colors duration-200 text-lg font-medium py-2"
+                      className="block text-white/80 hover:text-white transition-colors duration-200 text-base sm:text-lg font-medium py-2 mobile-touch mobile-text-sm"
                     >
                       {item.label}
                     </Link>
@@ -127,9 +127,9 @@ export function ResponsiveNavbar() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.3 }}
-                  className="pt-4 border-t border-white/10 space-y-4"
+                  className="pt-4 border-t border-white/10 space-y-3 mobile-gap-2"
                 >
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-2 sm:gap-3 mobile-gap-2">
                     <NetworkSelector />
                     <WalletInfo />
                     <ConnectButton />
