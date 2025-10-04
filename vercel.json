@@ -4,7 +4,6 @@
   "outputDirectory": "app/.next",
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": "nextjs",
-  "rootDirectory": "app",
   "functions": {
     "app/app/api/**/*.ts": {
       "runtime": "nodejs18.x"
