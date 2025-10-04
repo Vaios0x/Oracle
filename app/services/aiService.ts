@@ -143,7 +143,8 @@ export class AIService {
 
 La tecnología blockchain de Solana permite que Oracle procese transacciones a 65,000 TPS, haciendo que los mercados de predicción sean instantáneos y accesibles para todos.`,
         sources: ['Oracle Protocol Docs', 'Solana Ecosystem Report 2025'],
-        confidence: 0.95
+        confidence: 0.95,
+        timestamp: new Date().toISOString()
       }),
 
       solana_info: () => ({
@@ -162,7 +163,8 @@ La tecnología blockchain de Solana permite que Oracle procese transacciones a 6
 
 La arquitectura única de Solana con Proof of History permite escalabilidad sin comprometer la descentralización.`,
         sources: ['Solana Foundation', 'DeFi Pulse 2025'],
-        confidence: 0.98
+        confidence: 0.98,
+        timestamp: new Date().toISOString()
       }),
 
       defi_info: () => ({
@@ -182,7 +184,8 @@ La arquitectura única de Solana con Proof of History permite escalabilidad sin 
 
 Los mercados de predicción como Oracle están liderando la innovación en DeFi, combinando sabiduría de multitudes con tecnología blockchain avanzada.`,
         sources: ['DeFi Research Institute', 'Cross-Chain Protocol Analysis'],
-        confidence: 0.92
+        confidence: 0.92,
+        timestamp: new Date().toISOString()
       }),
 
       price_info: () => ({
@@ -201,7 +204,8 @@ Los mercados de predicción como Oracle están liderando la innovación en DeFi,
 
 Los tokens de utilidad en protocolos DeFi están viendo mayor valoración debido a casos de uso reales y generación de ingresos sostenibles.`,
         sources: ['CoinMarketCap 2025', 'Institutional Crypto Report'],
-        confidence: 0.88
+        confidence: 0.88,
+        timestamp: new Date().toISOString()
       }),
 
       help: () => ({
@@ -229,7 +233,8 @@ Los tokens de utilidad en protocolos DeFi están viendo mayor valoración debido
 
 ¿En qué área específica te gustaría que profundice?`,
         sources: ['Oracle Documentation', 'Web3 AI Research'],
-        confidence: 1.0
+        confidence: 1.0,
+        timestamp: new Date().toISOString()
       }),
 
       trends: () => ({
@@ -255,7 +260,8 @@ Los tokens de utilidad en protocolos DeFi están viendo mayor valoración debido
 
 Estas innovaciones están transformando cómo interactuamos con la información y tomamos decisiones.`,
         sources: ['Web3 Future Report 2025', 'AI Integration Studies'],
-        confidence: 0.94
+        confidence: 0.94,
+        timestamp: new Date().toISOString()
       }),
 
       general: () => ({
@@ -271,7 +277,8 @@ La combinación de tecnología blockchain avanzada, inteligencia artificial y mo
 
 ¿Te gustaría que profundice en algún aspecto específico de tu consulta o explorar alguna de estas tendencias?`,
         sources: ['Global DeFi Report 2025', 'Prediction Markets Analysis'],
-        confidence: 0.87
+        confidence: 0.87,
+        timestamp: new Date().toISOString()
       })
     };
 

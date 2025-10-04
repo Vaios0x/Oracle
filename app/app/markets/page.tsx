@@ -13,9 +13,9 @@ export default function MarketsPage() {
   const [selectedStatus, setSelectedStatus] = useState<string>('active');
 
   // Mock data for now - will be replaced with real data from hooks
-  const markets = [];
+  const markets: any[] = [];
   const isLoading = false;
-  const error = null;
+  const error: string | null = null;
 
   const filteredMarkets = markets?.filter(market => {
     const categoryMatch = selectedCategory === 'all' || 
@@ -42,7 +42,7 @@ export default function MarketsPage() {
     return (
       <div className="container mx-auto px-4 py-24">
         <GlassCard className="text-center py-12">
-          <p className="text-red-400">Error loading markets: {error.message}</p>
+          <p className="text-red-400">Error loading markets: {error}</p>
         </GlassCard>
       </div>
     );

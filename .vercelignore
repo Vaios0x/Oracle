@@ -1,0 +1,12 @@
+# Ignore everything except the app directory
+*
+!app
+!app/**
+!package.json
+!pnpm-workspace.yaml
+!vercel.json
+!Anchor.toml
+!Cargo.toml
+!programs
+!target
+!node_modules

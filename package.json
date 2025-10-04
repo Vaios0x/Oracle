@@ -4,7 +4,6 @@
   "private": true,
   "workspaces": ["app"],
   "scripts": {
-    "install": "pnpm install --prefix app",
     "build": "anchor build",
     "deploy": "anchor deploy",
     "deploy:devnet": "anchor deploy --provider.cluster devnet",
@@ -13,7 +12,8 @@
     "seed": "ts-node scripts/seed-markets.ts",
     "initialize": "ts-node scripts/initialize-protocol.ts",
     "dev:frontend": "cd app && pnpm run dev",
-    "build:frontend": "cd app && pnpm run build"
+    "build:frontend": "cd app && pnpm run build",
+    "vercel-build": "cd app && pnpm install --frozen-lockfile && pnpm run build"
   },
   "devDependencies": {
     "@coral-xyz/anchor": "^0.31.1",
