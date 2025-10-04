@@ -595,6 +595,47 @@ w3m-modal {
     min-height: 44px;
     min-width: 44px;
   }
+
+  /* Mobile Chatbot Optimizations */
+  .mobile-chatbot {
+    max-height: 80vh;
+    max-width: 95vw;
+  }
+
+  .mobile-chatbot-messages {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .mobile-chatbot-input {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .mobile-chatbot-button {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Mobile Chatbot Text */
+  .mobile-chatbot-text {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .mobile-chatbot-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  /* Mobile Chatbot Spacing */
+  .mobile-chatbot-padding {
+    padding: 0.5rem;
+  }
+
+  .mobile-chatbot-gap {
+    gap: 0.5rem;
+  }
 }
 
 /* Tablet Optimizations */

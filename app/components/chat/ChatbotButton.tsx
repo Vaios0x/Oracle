@@ -16,12 +16,12 @@ export function ChatbotButton() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 w-16 h-16 bg-gradient-to-r from-blue-600 to-gray-700 rounded-full shadow-2xl flex items-center justify-center group border border-gray-600/30"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-600 to-gray-700 rounded-full shadow-2xl flex items-center justify-center group border border-gray-600/30 mobile-touch"
       >
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8"
+          className="w-6 h-6 sm:w-8 sm:h-8"
         >
           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-white">
             <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" strokeWidth="2"/>
@@ -37,10 +37,10 @@ export function ChatbotButton() {
         />
         
         {/* Tooltip */}
-        <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          <div className="bg-gray-800 text-gray-100 text-xs px-3 py-2 rounded-lg shadow-lg whitespace-nowrap border border-gray-700/50">
+        <div className="absolute bottom-full right-0 mb-1 sm:mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden sm:block">
+          <div className="bg-gray-800 text-gray-100 text-xs px-2 sm:px-3 py-1 sm:py-2 rounded-lg shadow-lg whitespace-nowrap border border-gray-700/50 mobile-text-xs">
             SuperIntelligence AI
-            <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+            <div className="absolute top-full right-3 sm:right-4 w-0 h-0 border-l-3 sm:border-l-4 border-r-3 sm:border-r-4 border-t-3 sm:border-t-4 border-transparent border-t-gray-800"></div>
           </div>
         </div>
       </motion.button>
