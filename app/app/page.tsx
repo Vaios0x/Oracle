@@ -6,11 +6,15 @@ import { NeuralGradient } from '@/components/ui/NeuralGradient';
 import { GradientText } from '@/components/ui/GradientText';
 import { GlassButton } from '@/components/ui/GlassButton';
 import { QuickTemplates } from '@/components/markets/QuickTemplates';
+import { getPopularMarkets } from '@/lib/data/active-markets';
+import { formatNumber, formatTimeRemaining } from '@/lib/utils';
 import { BalanceDisplay } from '@/components/wallet/BalanceDisplay';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function HomePage() {
+  const popularMarkets = getPopularMarkets(6);
+  
   return (
     <>
       {/* Balance Display */}
@@ -138,14 +142,71 @@ export default function HomePage() {
       {/* Popular Templates Section */}
       <QuickTemplates />
 
-      {/* Demo Markets Section */}
+      {/* Popular Markets Section */}
       <div className="text-center px-4 mobile-mb-6">
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 lg:mb-8 mobile-h2">
-          <span className="gradient-text">Live Markets</span>
+          <span className="gradient-text">Popular Markets</span>
         </h2>
         <p className="text-white/60 text-sm sm:text-base md:text-lg mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto mobile-text-sm">
           Explore active prediction markets and start trading
         </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mobile-grid-1 tablet-grid-2 mb-6 sm:mb-8 mobile-mb-4">
+          {popularMarkets.slice(0, 3).map((market) => (
+            <GlassCard key={market.id} className="p-4 sm:p-6 mobile-card">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex justify-between items-start">
+                  <h3 className="text-lg sm:text-xl font-semibold text-white mobile-text-sm flex-1">
+                    {market.name}
+                  </h3>
+                  <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-medium mobile-text-xs">
+                    {market.status}
+                  </span>
+                </div>
+                
+                <p className="text-sm text-white/70 mobile-text-xs">
+                  {market.question}
+                </p>
+                
+                <div className="grid grid-cols-2 gap-2 mobile-grid-2">
+                  <div>
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">Volume</p>
+                    <p className="text-sm font-medium text-white mobile-text-xs">
+                      ${formatNumber(market.volume / 1_000_000)}M
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">Participants</p>
+                    <p className="text-sm font-medium text-white mobile-text-xs">
+                      {formatNumber(market.participants)}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex justify-between items-center p-3 sm:p-4 glass rounded-xl mobile-p-2">
+                  <div className="text-center flex-1">
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">YES</p>
+                    <p className="text-lg sm:text-xl font-bold text-green-400 mobile-text-sm">
+                      ${(market.yesPrice * 100).toFixed(2)}
+                    </p>
+                  </div>
+                  <div className="text-center flex-1">
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">NO</p>
+                    <p className="text-lg sm:text-xl font-bold text-red-400 mobile-text-sm">
+                      ${(market.noPrice * 100).toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-2 sm:gap-3 mobile-gap-2">
+                  <GlassButton className="flex-1 mobile-btn mobile-touch">Trade</GlassButton>
+                  <GlassButton variant="outline" className="flex-1 mobile-btn mobile-touch">View</GlassButton>
+                </div>
+              </div>
+            </GlassCard>
+          ))}
+        </div>
+        
         <Link href="/markets" className="mobile-full">
           <GlassButton 
             variant="neural" 

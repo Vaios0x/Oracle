@@ -6,25 +6,25 @@ import { GlassButton } from '@/components/ui/GlassButton';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { GradientText } from '@/components/ui/GradientText';
 import { MARKET_CATEGORIES } from '@/lib/solana/constants';
+import { getActiveMarkets, getMarketsByCategory } from '@/lib/data/active-markets';
+import { formatNumber, formatTimeRemaining } from '@/lib/utils';
 import Link from 'next/link';
 
 export default function MarketsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedStatus, setSelectedStatus] = useState<string>('active');
 
-  // Mock data for now - will be replaced with real data from hooks
-  const markets: any[] = [];
+  // Get real market data
+  const allMarkets = getActiveMarkets();
+  const markets = selectedCategory === 'all' 
+    ? allMarkets 
+    : getMarketsByCategory(parseInt(selectedCategory));
   const isLoading = false;
   const error: string | null = null;
 
   const filteredMarkets = markets?.filter(market => {
-    const categoryMatch = selectedCategory === 'all' || 
-      MARKET_CATEGORIES[parseInt(Object.keys(market.category)[0])] === selectedCategory;
-    
-    const statusMatch = selectedStatus === 'all' || 
-      Object.keys(market.status)[0] === selectedStatus.toLowerCase();
-
-    return categoryMatch && statusMatch;
+    const statusMatch = selectedStatus === 'all' || market.status === selectedStatus;
+    return statusMatch;
   }) || [];
 
   if (isLoading) {
@@ -110,7 +110,101 @@ export default function MarketsPage() {
         </GlassCard>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mobile-grid-1 tablet-grid-2">
-          {/* Market cards will go here */}
+          {filteredMarkets.map((market) => (
+            <GlassCard key={market.id} className="p-4 sm:p-6 mobile-card">
+              <div className="space-y-3 sm:space-y-4">
+                {/* Market Header */}
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 mobile-text-sm">
+                      {market.name}
+                    </h3>
+                    <p className="text-sm text-white/70 mobile-text-xs">
+                      {market.question}
+                    </p>
+                  </div>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    market.status === 'active' 
+                      ? 'bg-green-500/20 text-green-400' 
+                      : 'bg-gray-500/20 text-gray-400'
+                  }`}>
+                    {market.status}
+                  </span>
+                </div>
+
+                {/* Market Stats */}
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 mobile-grid-2">
+                  <div>
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">Liquidity</p>
+                    <p className="text-sm font-medium text-white mobile-text-xs">
+                      ${formatNumber(market.liquidity / 1_000_000)}M
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">Volume</p>
+                    <p className="text-sm font-medium text-white mobile-text-xs">
+                      ${formatNumber(market.volume / 1_000_000)}M
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">Participants</p>
+                    <p className="text-sm font-medium text-white mobile-text-xs">
+                      {formatNumber(market.participants)}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">Ends</p>
+                    <p className="text-sm font-medium text-white mobile-text-xs">
+                      {formatTimeRemaining(market.endDate)}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Price Display */}
+                <div className="flex justify-between items-center p-3 sm:p-4 glass rounded-xl mobile-p-2">
+                  <div className="text-center flex-1">
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">YES</p>
+                    <p className="text-lg sm:text-xl font-bold text-green-400 mobile-text-sm">
+                      ${(market.yesPrice * 100).toFixed(2)}
+                    </p>
+                  </div>
+                  <div className="text-center flex-1">
+                    <p className="text-xs text-white/50 mb-1 mobile-text-xs">NO</p>
+                    <p className="text-lg sm:text-xl font-bold text-red-400 mobile-text-sm">
+                      ${(market.noPrice * 100).toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1 sm:gap-2 mobile-gap-1">
+                  {market.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 bg-white/10 rounded-full text-xs text-white/70 mobile-text-xs"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {market.tags.length > 3 && (
+                    <span className="px-2 py-1 bg-white/10 rounded-full text-xs text-white/70 mobile-text-xs">
+                      +{market.tags.length - 3}
+                    </span>
+                  )}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2 sm:gap-3 mobile-gap-2">
+                  <GlassButton className="flex-1 mobile-btn mobile-touch">
+                    View Details
+                  </GlassButton>
+                  <GlassButton variant="outline" className="flex-1 mobile-btn mobile-touch">
+                    Trade
+                  </GlassButton>
+                </div>
+              </div>
+            </GlassCard>
+          ))}
         </div>
       )}
     </div>
