@@ -213,13 +213,13 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
               onChange={(e) => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Escribe tu mensaje..."
-              className="flex-1 bg-gray-800 border border-gray-600 rounded-xl px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-colors text-sm"
+              className="flex-1 min-w-0 bg-gray-800 border border-gray-600 rounded-xl px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-colors text-sm"
               disabled={isTyping}
             />
             <button
               onClick={handleSendMessage}
               disabled={!inputValue.trim() || isTyping}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-4 py-2 rounded-xl transition-colors text-sm font-medium"
+              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white px-3 py-2 rounded-xl transition-colors text-sm font-medium whitespace-nowrap flex-shrink-0"
             >
               Enviar
             </button>
