@@ -600,6 +600,7 @@ w3m-modal {
   .mobile-chatbot {
     max-height: 60vh;
     max-width: 90vw;
+    margin-bottom: 4rem;
   }
 
   .mobile-chatbot-messages {

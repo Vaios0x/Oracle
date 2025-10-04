@@ -118,7 +118,7 @@ export function SuperIntelligenceChat({ isOpen, onClose }: SuperIntelligenceChat
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.8, y: 20 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 mobile-p-2 mobile-chatbot"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-2 sm:p-4 mobile-p-2 mobile-chatbot pb-16 sm:pb-4"
     >
       {/* Backdrop */}
       <div 
