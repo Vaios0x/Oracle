@@ -200,7 +200,7 @@ export default function HomePage() {
                 
                 <div className="flex gap-2 sm:gap-3 mobile-gap-2">
                   <GlassButton className="flex-1 mobile-btn mobile-touch">Trade</GlassButton>
-                  <GlassButton variant="outline" className="flex-1 mobile-btn mobile-touch">View</GlassButton>
+                  <GlassButton variant="secondary" className="flex-1 mobile-btn mobile-touch">View</GlassButton>
                 </div>
               </div>
             </GlassCard>
