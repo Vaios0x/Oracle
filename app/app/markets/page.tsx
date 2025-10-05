@@ -155,7 +155,7 @@ export default function MarketsPage() {
                   <div>
                     <p className="text-xs text-white/50 mb-1 mobile-text-xs">Ends</p>
                     <p className="text-sm font-medium text-white mobile-text-xs">
-                      {formatTimeRemaining(market.endDate)}
+                      {formatTimeRemaining(new Date(market.endDate).getTime() / 1000)}
                     </p>
                   </div>
                 </div>
