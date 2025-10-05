@@ -198,7 +198,7 @@ export default function MarketsPage() {
                   <GlassButton className="flex-1 mobile-btn mobile-touch">
                     View Details
                   </GlassButton>
-                  <GlassButton variant="outline" className="flex-1 mobile-btn mobile-touch">
+                  <GlassButton variant="secondary" className="flex-1 mobile-btn mobile-touch">
                     Trade
                   </GlassButton>
                 </div>
