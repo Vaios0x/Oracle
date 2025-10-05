@@ -93,3 +93,15 @@ target/
 # Solana
 .anchor/
 test-ledger/
+
+# Private keys and sensitive config files
+*-keypair.json
+*-config.json
+deploy-keypair.json
+governance-keypair.json
+oraculo-keypair.json
+oracle-deployment-verification.json
+protocol-config.json
+real-deployment-config.json
+real-protocol-config.json
+wallet-keypair.json
